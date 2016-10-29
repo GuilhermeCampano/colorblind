@@ -29,11 +29,11 @@ export default class Pages extends React.Component {
 
     return (
       <div className = "page-container">
-        <nav>
+        {/* <nav>
           <li onClick={() => this.changePage('home')}> Home</li>
           <li onClick={() => this.changePage('about')}> Sobre</li>
           <li onClick={() => this.changePage('stages')}> Enigmas</li>
-        </nav>
+        </nav> */}
         <div className = "main-container">{this.getPage()}</div>
       </div>
     )
