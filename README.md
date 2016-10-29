@@ -1,31 +1,86 @@
-# colorblind
+# react-webpack-babel
+Simple React Webpack Babel Starter Kit
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.6.0.
+Tired of complicated starters with 200MB of dependencies which are hard to understand and modify?
 
-## Getting Started
+Try this is a simple [React](https://facebook.github.io/react/), [Webpack](http://webpack.github.io/) and [Babel](https://babeljs.io/) application with nothing else in it.
 
-### Prerequisites
+### What's in it?
 
-- [Git](https://git-scm.com/)
-- [Node.js and npm](nodejs.org) Node ^4.2.3, npm ^2.14.7
-- [Bower](bower.io) (`npm install --global bower`)
-- [Gulp](http://gulpjs.com/) (`npm install --global gulp`)
-- [MongoDB](https://www.mongodb.org/) - Keep a running daemon with `mongod`
+* Simple src/index.jsx and src/index.css (local module css).
+* Webpack configuration for development (with hot reloading) and production (with minification).
+* CSS module loading, so you can include your css by ```import styles from './path/to.css';```.
+* Both js(x) and css hot loaded during development.
 
-### Developing
+### To run
 
-1. Run `npm install` to install server dependencies.
+* You'll need to have [git](https://git-scm.com/) and [node](https://nodejs.org/en/) installed in your system.
+* Fork and clone the project:
 
-2. Run `bower install` to install front-end dependencies.
+```
+> $ git clone THIS_REPO_URL
+```
 
-3. Run `mongod` in a separate shell to keep an instance of the MongoDB Daemon running
+* Then install the dependencies:
 
-4. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
+```
+> $ npm install
+```
 
-## Build & development
+* Run development server:
 
-Run `grunt build` for building and `grunt serve` for preview.
+```
+> $ npm start
+```
 
-## Testing
+Open the web browser to `http://localhost:8888/`
 
-Running `npm test` will run the unit tests with karma.
+### To build production package
+
+```
+> $ npm run build
+```
+
+### Nginx Config
+
+Here is the suggested Nginx config:
+```
+server {
+	# ... root and other options
+
+	gzip on;
+	gzip_http_version 1.1;
+	gzip_types text/plain text/css text/xml application/javascript image/svg+xml;
+
+	location ~ \.html?$ {
+		expires 1d;
+	}
+
+	location ~ \.(svg|ttf|js|css|svgz|eot|otf|woff|jpg|jpeg|gif|png|ico)$ {
+		access_log off;
+		log_not_found off;
+		expires max;
+	}
+}
+```
+
+### Eslint
+There is a .eslint.yaml config for eslint ready with React plugin.
+To use it, you need to install additional dependencies though:
+
+```
+> npm install --save-dev eslint eslint-plugin-react
+```
+
+To do the actual linting, run:
+
+```
+> npm run lint
+```
+
+### Notes on importing css styles
+* styles having /src/ in their absolute path are considered part of the application and exported as local css modules.
+* styles having /node_modules|global/ in their absolute path are considered global styles used by many components and are included in the css bundle directly.
+
+### Contribute
+Please contribute to the project if you think this can be done better in anyway even for this README :)
