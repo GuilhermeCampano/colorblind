@@ -3,7 +3,14 @@ import { Link } from 'react-router';
 import style  from './navbar.scss';
 
 export default class Navbar extends React.Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.links = ['Home', 'About'];
+    this.linksHtml = this.links.map((link,index) => {
+      return <li key={index}><Link to={link.toLowerCase()}>{link}</Link></li>;
+    });
+  }
+  componentDidMount= () => {
     $('.button-collapse').sideNav({
       menuWidth: 300,
       edge: 'left',
@@ -17,12 +24,10 @@ export default class Navbar extends React.Component {
         <li href="#!" className="brand-logo"><Link to='home'>Colorblind</Link></li>
         <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
         <ul className="right hide-on-med-and-down">
-          <li><Link to='home'>Home</Link></li>
-          <li><Link to='about'>About</Link></li>
+          {this.linksHtml}
         </ul>
         <ul className="side-nav" id="mobile-demo">
-          <li><Link to='home'>Home</Link></li>
-          <li><Link to='about'>About</Link></li>
+          {this.linksHtml}
         </ul>
       </div>
     </nav>
