@@ -1,17 +1,22 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './index.scss';
-// import 'materialize-css/dist/css/materialize.css';
 import React from 'react';
-// import TodoBox from './components/todo/todoBox.jsx';
-import Pages from './components/pages/pages.jsx';
+import { render } from 'react-dom';
+import { Router, Route, Link, browserHistory } from 'react-router';
+import { Home, About } from './pages/pages.jsx';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <Pages/>
+      <Router history={browserHistory}>
+        <Route path="/" component={Home}></Route>
+        <Route path="/home" component={Home}></Route>
+        <Route path="/about" component={About}></Route>
+      </Router>
     )
   }
 }
+
+render(<App/>, document.querySelector("#app"));

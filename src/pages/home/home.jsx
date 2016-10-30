@@ -50,7 +50,7 @@ export default class Home extends React.Component {
           onChange={this.handleColorChange}
           value={this.state.color}
         />
-        
+
         <h4 style={{background: this.state.color}}> original {this.state.color} </h4>
         <h4 style={{background: this.state.protanopia}}> protanopia {this.state.protanopia} </h4>
         <h4 style={{background: this.state.protanomaly}}> protanomaly {this.state.protanomaly} </h4>
