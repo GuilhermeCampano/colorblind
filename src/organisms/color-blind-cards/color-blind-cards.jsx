@@ -16,7 +16,7 @@ export default class ColorBlindCards extends React.Component {
       return <div key={i} className={this.cardsClassWidth}> <ColorBlindCard  originalColor={originalColor} colorBlindType={colorBlindType}/> </div>
     });
     return(
-      <div className = 'row'>
+      <div className = 'color-blind-cards'>
         {listOfCards}
       </div>
     )

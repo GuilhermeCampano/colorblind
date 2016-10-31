@@ -1,7 +1,7 @@
 import React from 'react';
 import ColorBlindCards from '../../organisms/color-blind-cards/color-blind-cards.jsx';
 
-export default class Home extends React.Component {
+export default class CheckColorBlind extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,14 +22,20 @@ export default class Home extends React.Component {
   componentDidMount = () => {}
   render() {
     return(
-      <div className="home">
-        <input type="color"
-          placeholder="color"
-          maxLength="7"
-          onChange={this.handleColorChange}
-          value={this.state.color}
-        />
-        <ColorBlindCards color={this.state.color}/>
+      <div className="page">
+        <div className="row">
+          <div className="col s12 m4">
+            <input type="color"
+              placeholder="color"
+              maxLength="7"
+              onChange={this.handleColorChange}
+              value={this.state.color}
+            />
+          </div>
+          <div className="col s12 m8">
+            <ColorBlindCards color={this.state.color}/>
+          </div>
+        </div>
       </div>
     )
   }
